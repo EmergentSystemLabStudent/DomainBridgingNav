@@ -81,47 +81,53 @@
   <p class="center-align">Taichi Sakaguchi, <a href="https://scholar.google.com/citations?hl=en&user=jtB7J0AAAAAJ" target=“_blank” rel=“noopener noreferrer”>Akira Taniguchi</a>, <a href="https://scholar.google.com/citations?hl=en&user=Y4qjYvMAAAAJ" target=“_blank” rel=“noopener noreferrer”>Yoshinobu Hagiwara</a>, <a href="https://scholar.google.co.jp/citations?user=tsm7qaQAAAAJ&hl" target=“_blank” rel=“noopener noreferrer”>Lotfi El Hafi</a>, <a href="https://scholar.google.co.jp/citations?user=KPxSCJUAAAAJ&hl" target=“_blank” rel=“noopener noreferrer”>Shoichi Hasegawa</a>, <a href="https://scholar.google.com/citations?hl=en&user=dPOCLQEAAAAJ" target=“_blank” rel=“noopener noreferrer”>Tadahiro Taniguchi</a></p>
   
   <div class="github-link">
-    <a href="" target=“_blank” rel=“noopener noreferrer”>Github</a>
-    <a href="" target=“_blank” rel=“noopener noreferrer”>Paper</a>
-    <a href="" target=“_blank” rel=“noopener noreferrer”>Slide</a>
+    <a href="https://github.com/EmergentSystemLabStudent/DomainBridgingNav" target=“_blank” rel=“noopener noreferrer”>Github</a>
+    <!-- <a href="" target=“_blank” rel=“noopener noreferrer”>Paper</a>
+    <a href="" target=“_blank” rel=“noopener noreferrer”>Slide</a> -->
   </div>
 
   <div class="video-container">
       <iframe src="https://www.youtube.com/embed/vv9k_wPkfIs?si=8zLy3EsD6SoPXLBy" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
   </div>
   
-  <div class="video-container">
+  <!-- <div class="video-container">
       <iframe src="https://www.youtube.com/embed/n8se-MgPi50?si=B5B60-8XXMO-j2CC" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
-  </div>
+  </div> -->
   
   <h2 class="fixed-width">Abstract</h2>
   <p class="center-align fixed-width text-justify">
-    Improving the success rate of Instance-specific Image Goal Navigation (InstanceImageNav) in robotic systems is crucial for assisting users in locating desired objects within their environment. 
+    Improving the success rate of Instance-specific Image Goal Navigation (InstanceImageNav) in robotic systems is crucial for assisting users in locating desired objects within their environment.
     InstanceImageNav involves receiving an object's query image from the user and locating the object within the environment identical to the query image.
-    The challenge lies in the domain gap between low-quality images observed by the robot due to motion blur and low-resolution and high-quality query images provided by the user. 
+    The challenge lies in the domain gap between low-quality images observed by the robot due to motion blur and low-resolution and high-quality query images provided by the user.
     Such a domain gap between images could reduce the success rate of the task.
-    This study proposes a method that employs contrastive learning to learn invariant features between these two image qualities and integrates an object image collection system with a pre-trained deblurring model to enhance the observed image quality. 
+    This study proposes a method that employs contrastive learning to learn invariant features between these two image qualities and integrates an object image collection system with a pre-trained deblurring model to enhance the observed image quality.
+    SimSiam pre-trained on ImageNet is fine-tuned by the proposed contrastive learning.
     We evaluated the performance of our proposal by performing an InstanceImageNav task in which the robot identifies the same instance as a high-quality query image by the user from the collected images in the real-world environment.
-    Our experimental results demonstrate that our method improves the success rate of InstanceImageNav by up to three times compared to the baseline, which is an original method based on SuperGlue.  </p>
+    Our experimental results demonstrate that our method improves the success rate of InstanceImageNav by up to three times compared to the baseline, which is an original method based on SuperGlue.
+  </p>
 
+  <h2 class="fixed-width">Approach</h2>
+  <p class="center-align fixed-width text-justify">
+    The robot navigates to the position with the maximum information gain (IG) among the candidate points. The IG in Active-SpCoSLAM consists of a weighted sum of three IGs. IGs in Active-SpCoSLAM consist of a weighted sum of three IGs: IGs related to spatial concepts, IGs related to self-location, and IGs related to maps, respectively.
+  </p>
   <div class="image-container">
     <img src="./images/graphical_model.png">
   </div>
 
-  <h2 class="fixed-width">Action determination</h2>
+  <h2 class="fixed-width">Data Collection Module</h2>
   <p class="center-align fixed-width text-justify">
-    The robot navigates to the position with the maximum information gain (IG) among the candidate points. The IG in Active-SpCoSLAM consists of a weighted sum of three IGs. IGs in Active-SpCoSLAM consist of a weighted sum of three IGs: IGs related to spatial concepts, IGs related to self-location, and IGs related to maps, respectively.
+    First, the robot acquires multiple images of its surroundings with the head camera. Then, the images are input to ClipCap for caption generation, and the images are input to CNN to obtain image features. The robot learns location concepts by categorizing these, plus self-position, into three multimodal pieces of information.
   </p>
 
-  <video src="./images/information_gain_demo.mp4" style="width: 700px; height: auto;" controls></video>
+  <h2 class="fixed-width">Fine-tuning Module</h2>
+  <p class="center-align fixed-width text-justify">
+    First, the robot acquires multiple images of its surroundings with the head camera. Then, the images are input to ClipCap for caption generation, and the images are input to CNN to obtain image features. The robot learns location concepts by categorizing these, plus self-position, into three multimodal pieces of information.
+  </p>
 
-  <div class="col-md-8">
-    <h2 class="text-center">Learning spatial concept</h2>
-    <p class="text-justify">
-      First, the robot acquires multiple images of its surroundings with the head camera. Then, the images are input to ClipCap for caption generation, and the images are input to CNN to obtain image features. The robot learns location concepts by categorizing these, plus self-position, into three multimodal pieces of information.
-    </p>
-  </div>
-  <video src="./images/spatial_concept.mp4" style="width: 700px; height: auto;" controls></video>
+  <h2 class="fixed-width">Navigation Module</h2>
+  <p class="center-align fixed-width text-justify">
+    First, the robot acquires multiple images of its surroundings with the head camera. Then, the images are input to ClipCap for caption generation, and the images are input to CNN to obtain image features. The robot learns location concepts by categorizing these, plus self-position, into three multimodal pieces of information.
+  </p>
 
   <div class="col-md-8">
     <h2 class="text-center">Citation</h2>
