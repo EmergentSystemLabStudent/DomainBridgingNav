@@ -78,7 +78,7 @@
     </div>
   </div>
   
-  <p class="center-align">Taichi Sakaguchi, <a href="https://scholar.google.com/citations?hl=en&user=jtB7J0AAAAAJ" target=“_blank” rel=“noopener noreferrer”>Akira Taniguchi</a>, <a href="https://scholar.google.com/citations?hl=en&user=Y4qjYvMAAAAJ" target=“_blank” rel=“noopener noreferrer”>Yoshinobu Hagiwara</a>, <a href="https://scholar.google.com/citations?hl=en&user=Y4qjYvMAAAAJ" target=“_blank” rel=“noopener noreferrer”>Lotfi El Hafi</a>, <a href="https://scholar.google.co.jp/citations?user=tsm7qaQAAAAJ&hl" target=“_blank” rel=“noopener noreferrer”>Shoichi Hasegawa</a>, <a href="https://scholar.google.com/citations?hl=en&user=dPOCLQEAAAAJ" target=“_blank” rel=“noopener noreferrer”>Tadahiro Taniguchi</a></p>
+  <p class="center-align">Taichi Sakaguchi, <a href="https://scholar.google.com/citations?hl=en&user=jtB7J0AAAAAJ" target=“_blank” rel=“noopener noreferrer”>Akira Taniguchi</a>, <a href="https://scholar.google.com/citations?hl=en&user=Y4qjYvMAAAAJ" target=“_blank” rel=“noopener noreferrer”>Yoshinobu Hagiwara</a>, <a href="https://scholar.google.co.jp/citations?user=tsm7qaQAAAAJ&hl" target=“_blank” rel=“noopener noreferrer”>Lotfi El Hafi</a>, <a href="https://scholar.google.co.jp/citations?user=KPxSCJUAAAAJ&hl" target=“_blank” rel=“noopener noreferrer”>Shoichi Hasegawa</a>, <a href="https://scholar.google.com/citations?hl=en&user=dPOCLQEAAAAJ" target=“_blank” rel=“noopener noreferrer”>Tadahiro Taniguchi</a></p>
   
   <div class="github-link">
     <a href="" target=“_blank” rel=“noopener noreferrer”>Github</a>
@@ -96,8 +96,13 @@
   
   <h2 class="fixed-width">Abstract</h2>
   <p class="center-align fixed-width text-justify">
-    Active semantic mapping is essential for service robots to quickly capture both the environment’s map and its spatial meaning, while also minimizing users’ burdens during robot operation and data collection. SpCoSLAM, which is a semantic mapping with place categorization and simultaneous localization and mapping (SLAM), offers the advantage of not being limited to predefined labels, making it well-suited for environmental adaptation. However, SpCoSLAM presents two issues that increase users’ burdens: 1) users struggle to efficiently determine a destination for the robot’s quick adaptation, and 2) providing instructions to the robot becomes repetitive and cumbersome. To address these challenges, we propose Active-SpCoSLAM, which enables the robot to actively explore uncharted areas while employing CLIP as image captioning to provide a flexible vocabulary that replaces human instructions. The robot determines its actions by calculating information gain integrated from both semantics and SLAM uncertainties.
-  </p>
+    Improving the success rate of Instance-specific Image Goal Navigation (InstanceImageNav) in robotic systems is crucial for assisting users in locating desired objects within their environment. 
+    InstanceImageNav involves receiving an object's query image from the user and locating the object within the environment identical to the query image.
+    The challenge lies in the domain gap between low-quality images observed by the robot due to motion blur and low-resolution and high-quality query images provided by the user. 
+    Such a domain gap between images could reduce the success rate of the task.
+    This study proposes a method that employs contrastive learning to learn invariant features between these two image qualities and integrates an object image collection system with a pre-trained deblurring model to enhance the observed image quality. 
+    We evaluated the performance of our proposal by performing an InstanceImageNav task in which the robot identifies the same instance as a high-quality query image by the user from the collected images in the real-world environment.
+    Our experimental results demonstrate that our method improves the success rate of InstanceImageNav by up to three times compared to the baseline, which is an original method based on SuperGlue.  </p>
 
   <div class="image-container">
     <img src="./images/graphical_model.png">
