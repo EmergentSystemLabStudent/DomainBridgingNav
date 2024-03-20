@@ -94,22 +94,23 @@
   
   <h2 class="fixed-width">Abstract</h2>
   <p class="center-align fixed-width text-justify">
-    Improving the success rate of Instance-specific Image Goal Navigation (InstanceImageNav) in robotic systems is crucial for assisting users in locating desired objects within their environment.
-    InstanceImageNav involves receiving an object's query image from the user and locating the object within the environment identical to the query image.
-    The challenge lies in the domain gap between low-quality images observed by the robot due to motion blur and low-resolution and high-quality query images provided by the user.
-    Such a domain gap between images could reduce the success rate of the task.
-    This study proposes a method that employs contrastive learning to learn invariant features between these two image qualities and integrates an object image collection system with a pre-trained deblurring model to enhance the observed image quality.
-    SimSiam pre-trained on ImageNet is fine-tuned by the proposed contrastive learning.
-    We evaluated the performance of our proposal by performing an InstanceImageNav task in which the robot identifies the same instance as a high-quality query image by the user from the collected images in the real-world environment.
-    Our experimental results demonstrate that our method improves the success rate of InstanceImageNav by up to three times compared to the baseline, which is an original method based on SuperGlue.
-  </p>
+    Improving instance-specific image goal navigation (InstanceImageNav), which locates the identical object in a real-world environment from a query image, is essential for robotic systems to assist users in finding desired objects.
+    The challenge lies in the domain gap between low-quality images observed by the moving robot, characterized by motion blur and low-resolution, and high-quality query images provided by the user.
+    Such domain gaps could significantly reduce the task success rate but have not been the focus of previous work.
+    To address this, we propose a novel method called Few-shot Cross-quality Instance-aware Adaptation (CrossIA), which employs contrastive learning with an instance classifier to align features between massive low- and few high-quality images.
+    This approach effectively reduces the domain gap by bringing the latent representations of cross-quality images closer on an instance basis.
+    Additionally, the system integrates an object image collection with a pre-trained deblurring model to enhance the observed image quality.
+    Our method fine-tunes the SimSiam model, pre-trained on ImageNet, using CrossIA. 
+    We evaluated our method's effectiveness through an InstanceImageNav task with 20 different types of instances, where the robot identifies the same instance in a real-world environment as a high-quality query image.
+    Our experiments showed that our method improves the task success rate by up to three times compared to the baseline, a conventional approach based on SuperGlue.
+    These findings highlight the potential of leveraging contrastive learning and image enhancement techniques to bridge the domain gap and improve object localization in robotic applications.  </p>
 
   <h2 class="fixed-width">Approach</h2>
   <p class="center-align fixed-width text-justify">
     As shown in Figure, the proposed system is divided into three main modules.
     Firstly, the Data Collection Module constructs the 3D semantic map of the environment and then collects object images.
     Secondly, the Fine-tuning Module fine-tunes the pre-trained models using the collected object images and few-shot high-quality images provided by the user through contrastive learning.
-    Our contrastive learning is called Few-shot Cross-quality Instance-aware Adaptation (CrossIA).
+    Our contrastive learning is called <b> Few-shot Cross-quality Instance-aware Adaptation (CrossIA) <\b>.
     Lastly, the Navigation Module leverages the fine-tuned model and the semantic map to locate objects identical to the query image.  </p>
   <div class="image-container">
     <img src="./images/real_approach.svg">
