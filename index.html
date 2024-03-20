@@ -106,8 +106,11 @@
 
   <h2 class="fixed-width">Approach</h2>
   <p class="center-align fixed-width text-justify">
-    The robot navigates to the position with the maximum information gain (IG) among the candidate points. The IG in Active-SpCoSLAM consists of a weighted sum of three IGs. IGs in Active-SpCoSLAM consist of a weighted sum of three IGs: IGs related to spatial concepts, IGs related to self-location, and IGs related to maps, respectively.
-  </p>
+    As shown in Figure, the proposed system is divided into three main modules.
+    Firstly, the Data Collection Module constructs the 3D semantic map of the environment and then collects object images.
+    Secondly, the Fine-tuning Module fine-tunes the pre-trained models using the collected object images and few-shot high-quality images provided by the user through contrastive learning.
+    Our contrastive learning is called Few-shot Cross-quality Instance-aware Adaptation (CrossIA).
+    Lastly, the Navigation Module leverages the fine-tuned model and the semantic map to locate objects identical to the query image.  </p>
   <div class="image-container">
     <img src="./images/real_approach.svg">
   </div>
