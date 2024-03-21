@@ -184,7 +184,13 @@
     
   <h2 class="fixed-width">Navigation Module</h2>
   <p class="center-align fixed-width text-justify">
-    First, the robot acquires multiple images of its surroundings with the head camera. Then, the images are input to ClipCap for caption generation, and the images are input to CNN to obtain image features. The robot learns location concepts by categorizing these, plus self-position, into three multimodal pieces of information.
+    The Navigation Module locates the object identical to the given query image.
+    This is conducted by leveraging images of objects collected by the Data Collection Module, the 3D semantic map, and feature vectors extracted from the fine-tuned image encoder.
+     First, the fine-tuned image encoder is utilized to compute the feature vectors 
+    \( x_{obs} \) and \( x_{query} \) for the object images collected by the Data Collection Module and the query image, respectively.
+    Using these feature vectors, the similarity \( s \) between the query image and the observed object images is calculated using the cosine similarity.
+    Then, the instance with the highest similarity to the query image is identified.
+    Next, the module identifies the centroid coordinates of the object on the 3D map that is most similar to the query image, and the robot moves to close it.
   </p>
 
   <div class="col-md-8">
@@ -192,6 +198,7 @@
     <p class="text-justify">
       This paper is under review on IEEE/RSJ International Conference on Intelligent Robots and Systems (IROS2024), and the BibTeX for the paper is below.
       <textarea id="bibtex" class="form-control" readonly rows="6" cols="105">
+        
 @inproceedings{domainbridgingnav2024,
   title={Real-world Instance-specific Image Goal Navigation for Service Robots via Bridging Domain Gap Based on Contrastive Learning},
   author={Taichi Sakaguchi and Akira Taniguchi and Yoshinobu Hagiwara and Lotfi El Hafi and Shoichi Hasegawa and Tadahiro Taniguchi},
