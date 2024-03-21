@@ -112,6 +112,7 @@
     Secondly, the Fine-tuning Module fine-tunes the pre-trained models using the collected object images and few-shot high-quality images provided by the user through contrastive learning.
     Our contrastive learning is called <b> Few-shot Cross-quality Instance-aware Adaptation (CrossIA) </b>.
     Lastly, the Navigation Module leverages the fine-tuned model and the semantic map to locate objects identical to the query image.  </p>
+  
   <div class="image-container">
     <img src="./images/real_approach.svg">
   </div>
@@ -130,9 +131,22 @@
 
   <h2 class="fixed-width">Fine-tuning Module</h2>
   <p class="center-align fixed-width text-justify">
-    First, the robot acquires multiple images of its surroundings with the head camera. Then, the images are input to ClipCap for caption generation, and the images are input to CNN to obtain image features. The robot learns location concepts by categorizing these, plus self-position, into three multimodal pieces of information.
-  </p>
+    This module fine-tunes a pre-trained image encoder by the contrastive task between low-quality images observed by the robot and few-shot high-quality images provided by the user.
+    SimSiam, a negative free contrastive learning method, is shown to be capable of learning with small batch size.
+    In contrast, contrastive learning methods require negative pairs learning with a huge batch size.
+    Therefore, we utilize SimSiam for fine-tuning.
+    
+    Additionally, for training, the user needs to capture few-shot images of objects they want the robot to locate with a mobile device and provide them to the robot.
+    This requires the user to instruct the robot, but since it involves only a few images, it could not be considered a significant burden for the user.
+    In this study, we assume that the system has up to five high-quality images for each instance and evaluate the experiments accordingly.
+    
+    Furthermore, it is shown that by minimizing the loss of contrastive learning and the loss function of the linear classifier for a pre-trained image encoder through fine-tuning, the variance of feature vectors between images with the same label decreases.
+    This characteristic leads to an improvement in the accuracy of image classification tasks.  </p>
 
+  <div class="image-container">
+    <img src="./images/real_approach.svg">
+  </div>
+  
   <h2 class="fixed-width">Navigation Module</h2>
   <p class="center-align fixed-width text-justify">
     First, the robot acquires multiple images of its surroundings with the head camera. Then, the images are input to ClipCap for caption generation, and the images are input to CNN to obtain image features. The robot learns location concepts by categorizing these, plus self-position, into three multimodal pieces of information.
