@@ -54,9 +54,24 @@
       justify-content: center;
     }
 
+    .image-container {
+      display: flex;
+      justify-content: center;
+      align-items: center; /* 追加: 要素を横軸中心に配置 */
+      flex-direction: column; /* 追加: 子要素を縦に並べる */
+      width: 600px; /* 必要に応じて調整 */
+      margin: auto;
+    }
+
     .image-container img {
-      width: 700px;
+      width: 100%; /* 子要素の幅を親要素に合わせる */
       height: auto;
+    }
+
+    .image-caption {
+      text-align: center;
+      width: 100%; /* キャプションの幅を親要素に合わせる */
+      margin-top: 10px; /* キャプションの上の余白を追加 */
     }
 
     .video-container {
@@ -115,9 +130,9 @@
     Our contrastive learning is called <b> Few-shot Cross-quality Instance-aware Adaptation (CrossIA) </b>.
     Lastly, the Navigation Module leverages the fine-tuned model and the semantic map to locate objects identical to the query image.  </p>
   
-  <div class="image-container" style="width: 600px; margin: auto; text-align: center;">
-      <div style="text-align: center;">Figure 1: Overview of our method</div> <!-- キャプションを中央寄せするためのdiv -->
-      <img src="./images/real_approach.svg" style="width: 100%; height: auto;">
+  <div class="image-container">
+    <div class="image-caption">Figure 1: Overview of our method</div>
+    <img src="./images/real_approach.svg" alt="Overview of our method">
   </div>
 
 
