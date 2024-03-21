@@ -118,8 +118,15 @@
 
   <h2 class="fixed-width">Data Collection Module</h2>
   <p class="center-align fixed-width text-justify">
-    First, the robot acquires multiple images of its surroundings with the head camera. Then, the images are input to ClipCap for caption generation, and the images are input to CNN to obtain image features. The robot learns location concepts by categorizing these, plus self-position, into three multimodal pieces of information.
-  </p>
+    The Data Collection Module constructs a 3D semantic map from sequence data of RGBD images and camera poses collected by the robot moving in 3D space.
+    First, RGB images collected by the robot exploring the environment are inputted into the Multi-Scale Stage Network for deblurring.
+    Next, they are inputted into the FastSAM for image segmentation.
+    Then 3D semantic map is constructed using the segmentation results, depth images, and camera poses.
+    Next, this module collects object images using a constructed 3D semantic map.
+    During this process, 2D segmentation masks images from the 3D semantic map by ray tracing.
+    Ray tracing generates a mask image from an arbitrary camera pose by sending pseudo-rays in the depth direction from the camera and capturing the instance ID of the first collision on the 3D map.
+    This process ensures the consistent generation of pseudo-labels for images of the same instance.
+    Then, the generated mask images are transformed into bounding boxes (BBoxes), and the regions of the transformed BBoxes are extracted from the RGB images to collect object images.  </p>
 
   <h2 class="fixed-width">Fine-tuning Module</h2>
   <p class="center-align fixed-width text-justify">
