@@ -97,7 +97,7 @@
     Improving instance-specific image goal navigation (InstanceImageNav), which locates the identical object in a real-world environment from a query image, is essential for robotic systems to assist users in finding desired objects.
     The challenge lies in the domain gap between low-quality images observed by the moving robot, characterized by motion blur and low-resolution, and high-quality query images provided by the user.
     Such domain gaps could significantly reduce the task success rate but have not been the focus of previous work.
-    To address this, we propose a novel method called Few-shot Cross-quality Instance-aware Adaptation (CrossIA), which employs contrastive learning with an instance classifier to align features between massive low- and few high-quality images.
+    To address this, we propose a novel method called <b> Few-shot Cross-quality Instance-aware Adaptation (CrossIA)</b>, which employs contrastive learning with an instance classifier to align features between massive low- and few high-quality images.
     This approach effectively reduces the domain gap by bringing the latent representations of cross-quality images closer on an instance basis.
     Additionally, the system integrates an object image collection with a pre-trained deblurring model to enhance the observed image quality.
     Our method fine-tunes the SimSiam model, pre-trained on ImageNet, using CrossIA. 
@@ -110,7 +110,7 @@
     As shown in Figure, the proposed system is divided into three main modules.
     Firstly, the Data Collection Module constructs the 3D semantic map of the environment and then collects object images.
     Secondly, the Fine-tuning Module fine-tunes the pre-trained models using the collected object images and few-shot high-quality images provided by the user through contrastive learning.
-    Our contrastive learning is called <b> Few-shot Cross-quality Instance-aware Adaptation (CrossIA) <\b>.
+    Our contrastive learning is called <b> Few-shot Cross-quality Instance-aware Adaptation (CrossIA) </b>.
     Lastly, the Navigation Module leverages the fine-tuned model and the semantic map to locate objects identical to the query image.  </p>
   <div class="image-container">
     <img src="./images/real_approach.svg">
