@@ -135,14 +135,6 @@
     <div class="image-caption">Figure 1: Overview of our method</div>
   </div>
 
-  <div class="video-container">
-      <iframe width="560" height="315" src="https://www.youtube.com/embed/Bx7k5HSl_1s?si=qX9feQ5N3McShKuR" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
-  </div>
-
-              <div class="publication-video">
-                <iframe src="https://www.youtube.com/embed/O3h9yd-cytI" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
-              </div>
-
   <h2 class="fixed-width">Data Collection Module</h2>
   <p class="center-align fixed-width text-justify">
     The Data Collection Module constructs a 3D semantic map from sequence data of RGBD images and camera poses collected by the robot moving in 3D space.
@@ -155,6 +147,12 @@
     This process ensures the consistent generation of pseudo-labels for images of the same instance.
     Then, the generated mask images are transformed into bounding boxes (BBoxes), and the regions of the transformed BBoxes are extracted from the RGB images to collect object images.  </p>
 
+
+  <div class="video-container">
+      <iframe width="560" height="315" src="https://www.youtube.com/embed/Bx7k5HSl_1s?si=qX9feQ5N3McShKuR" title="YouTube video player" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+  </div>
+
+  
   <h2 class="fixed-width">Fine-tuning Module</h2>
   <p class="center-align fixed-width text-justify">
     This module fine-tunes a pre-trained image encoder by the contrastive task between low-quality images observed by the robot and few-shot high-quality images provided by the user.
@@ -203,7 +201,7 @@
 
   <div class="col-md-8">
     <h2 class="text-center">Citation</h2>
-    <p class="text-justify">
+    <p class="center-align fixed-width text-justify">
       The BibTeX for this paper is below.
       <pre><code>
 @inproceedings{domainbridgingnav2024,
