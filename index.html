@@ -121,7 +121,7 @@
     We evaluated our method's effectiveness through an InstanceImageNav task with 20 different types of instances, where the robot identifies the same instance in a real-world environment as a high-quality query image.
     Our experiments showed that our method improves the task success rate by up to three times compared to the baseline, a conventional approach based on SuperGlue.
     These findings highlight the potential of leveraging contrastive learning and image enhancement techniques to bridge the domain gap and improve object localization in robotic applications.  </p>
-
+<br>
   <h2 class="fixed-width">Approach</h2>
   <p class="center-align fixed-width text-justify">
     As shown in Figure 1, the proposed system is divided into three main modules.
@@ -134,7 +134,7 @@
     <img src="./images/real_approach.svg" alt="Overview of our method">
     <div class="image-caption">Figure 1: Overview of our method</div>
   </div>
-
+<br>
   <h2 class="fixed-width">Data Collection Module</h2>
   <p class="center-align fixed-width text-justify">
     The Data Collection Module constructs a 3D semantic map from sequence data of RGBD images and camera poses collected by the robot moving in 3D space.
@@ -199,10 +199,12 @@
     Next, the module identifies the centroid coordinates of the object on the 3D map that is most similar to the query image, and the robot moves to close it.
   </p>
 
+    
 <div class="video-container">
-<iframe width="560" height="315" src="https://www.youtube.com/embed/RwuG36Vcjc0" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+  <iframe width="560" height="315" src="https://www.youtube.com/embed/eSN7ZDlBsew?si=PjvbBheTbDDhlAlk" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+<!-- <iframe width="560" height="560" src="https://www.youtube.com/embed/RwuG36Vcjc0" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe> -->
 </div>
-  
+  <br>
   <div class="col-md-8">
     <h2 class="text-center">Citation</h2>
     <p class="center-align fixed-width text-justify">
