@@ -1,16 +1,16 @@
 from __future__ import annotations
 from typing import Collection, List
 
-import torch 
+import torch
 from torch.utils.data import Dataset
 from torchvision.transforms import Compose
 
-import os 
-import random 
-from PIL import Image 
+import os
+import random
+from PIL import Image
 
 class SemiSupervisedContrastiveDataset(Dataset):
-    
+
     def __init__(self, dataset_dir: str, transforms: Collection=None) -> None:
 
         self._dataset_dir = dataset_dir
@@ -18,32 +18,31 @@ class SemiSupervisedContrastiveDataset(Dataset):
             self._transforms = Compose(transforms)
         else:
             self._transforms = transforms
-        
+
         self._classes, self._instance_id_to_index = self._get_labels()
         self._lq_img_path_and_labels, self._hq_img_path_and_labels = self._get_image_path_dict()
-        
-        
+
     def _get_labels(self):
         # labels: instance id
         labels = [d.name for d in os.scandir(self._dataset_dir)]
         labels.sort()
         instance_id_to_index = {instance_id: i for i, instance_id in enumerate(labels)} # {'0': 0, '1': 1, '2': 2, '3': 3, '4': 4, '5': 5, '6': 6, '7': 7, '8': 8, '9': 9}
         return labels, instance_id_to_index
-    
+
     def __len__(self):
         return len(self._lq_img_path_and_labels)
-    
+
     def __getitem__(self, index):
-        
+
         lq_image_path, lq_label = self._lq_img_path_and_labels[index]
         hq_image_path_list = [img_path for img_path, hq_label in self._hq_img_path_and_labels if lq_label==hq_label]
         if len(hq_image_path_list)>0:
             other_view = random.choice(hq_image_path_list) 
-            
+
         else:
             same_object_images = [img_path for img_path, label in self._lq_img_path_and_labels if lq_label == label]
             other_view = random.choice(same_object_images)
-            
+
         x0, x1 = Image.open(lq_image_path), Image.open(other_view)
         x0, x1 = self._transforms(x0), self._transforms(x1)
         
