@@ -1,0 +1,16 @@
+version: '2'
+services:
+  domain_bridging_nav:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    image: domain_bridging_nav:latest
+    shm_size: 4gb
+    volumes:
+      - ../DomainBridgingNav:/DomainBridgingNav
+    tty: true
+    deploy:
+      resources:
+        reservations:
+          devices:
+            - capabilities: [gpu]
