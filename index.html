@@ -139,19 +139,17 @@
 
 
 <!-- Teaser video-->
-<!-- <section class="hero teaser">
-  <div class="container is-max-desktop">
+<!-- Teaser video-->
+<section class="hero teaser">
+  <div class="container is-max-desktop" style="text-align: center;"> <!-- 動画を中央揃え -->
     <div class="hero-body">
-      <video poster="" id="tree" autoplay controls muted loop height="100%">
-        <source src="static/videos/banner_video.mp4"
-        type="video/mp4">
+      <video poster="" id="tree" autoplay controls muted loop 
+             style="width: 70%; height: auto; display: block; margin: 0 auto;">
+        <source src="./static/videos/v3.mp4" type="video/mp4">
       </video>
-      <h2 class="subtitle has-text-centered">
-        Aliquam vitae elit ullamcorper tellus egestas pellentesque. Ut lacus tellus, maximus vel lectus at, placerat pretium mi. Maecenas dignissim tincidunt vestibulum. Sed consequat hendrerit nisl ut maximus.
-      </h2>
     </div>
   </div>
-</section> -->
+</section>
 <!-- End teaser video -->
 
 <!-- Paper abstract -->
@@ -186,9 +184,9 @@
     <div class="container">
       <h2 class="title is-3">Overview</h2>
       <!-- <div id="results-carousel" class="carousel results-carousel"> -->
-        <div class="item">
-          <img src="./static/images/overview.svg" alt="image of model" style="width: 70%; height: auto;"/>
-          <h2 class="subtitle has-text-centered">
+        <div class="item" style="text-align: center;">
+          <img src="./static/images/overview.svg" alt="image of model" style="width: 70%; height: auto; display: block; margin: 0 auto;"/>
+          <h2 class="subtitle has-text-centered" style="text-align: left; margin-top: 20px;">
             Focused task in this study. 
             (Top) The robot identifies the position of an object shown in a query image provided by a user's mobile phone.
             (Bottom left) Domain gap that the image quality significantly differs between the image taken by the user's mobile phone and the object image observed by the real robot. 
@@ -225,9 +223,9 @@
     <div class="container">
       <h2 class="title is-3">Few-shot cross-quality instance-aware adaptation (CrossIA)</h2>
       <!-- <div id="results-carousel" class="carousel results-carousel"> -->
-        <div class="item">
-          <img src="./static/images/proposed_method.svg" alt="image of model" style="width: 70%; height: auto;"/>
-          <h2 class="subtitle has-text-centered">
+        <div class="item" style="text-align: center;">
+          <img src="./static/images/proposed_method.svg" alt="image of model" style="width: 70%; height: auto; display: block; margin: 0 auto;"/>
+          <h2 class="subtitle has-text-centered" style="text-align: left; margin-top: 20px;">
             The overall diagram of the proposed system. 
             The proposed system automatically collects object images from RGBD images and camera pose time series data collected by a robot that explored the environment in advance. 
             The object image database stores images along with their corresponding ID and position coordinates (e.g., ”ID:1, [3.7, 0.8]”). 
@@ -263,49 +261,29 @@
 <section class="hero is-small">
   <div class="hero-body">
     <div class="container">
-      <!-- <div id="results-carousel" class="carousel results-carousel"> -->
-        <div class="video-section1">
-          <h3 class="title is-3">Data Collection Module</h3>
-          <div class="publication-video">
-            <iframe 
-                src="https://www.youtube.com/embed/Bx7k5HSl_1s" 
-                frameborder="0" 
-                allow="autoplay; encrypted-media" 
-                allowfullscreen 
-                style="width: 70%; height: 400px; margin: 0 auto; display: block;">
-            </iframe>
-            <h2 class="subtitle has-text-centered">
-              The Data Collection Module constructs a 3D semantic map from sequence data of RGBD images and camera poses collected by the robot moving in 3D space.
-              First, RGB images collected by the robot exploring the environment are inputted into the Multi-Scale Stage Network for deblurring.
-              Next, they are inputted into the FastSAM for image segmentation.
-              Then 3D semantic map is constructed using the segmentation results, depth images, and camera poses.
-              Next, this module collects object images using a constructed 3D semantic map.
-              During this process, 2D segmentation masks images from the 3D semantic map by ray tracing.
-              Ray tracing generates a mask image from an arbitrary camera pose by sending pseudo-rays in the depth direction from the camera and capturing the instance ID of the first collision on the 3D map.
-              This process ensures the consistent generation of pseudo-labels for images of the same instance.
-              Then, the generated mask images are transformed into bounding boxes (BBoxes), and the regions of the transformed BBoxes are extracted from the RGB images to collect object images. 
-             </h2>
-          </div>
+      <div class="video-section1" style="text-align: center;"> <!-- 動画を中央に配置 -->
+        <h3 class="title is-3">Data Collection Module</h3>
+        <div class="publication-video" style="display: inline-block; text-align: left; max-width: 70%;"> <!-- 動画に合わせて説明文を左揃え -->
+          <iframe 
+              src="https://www.youtube.com/embed/Bx7k5HSl_1s" 
+              frameborder="0" 
+              allow="autoplay; encrypted-media" 
+              allowfullscreen 
+              style="width: 100%; height: 400px; display: block; margin: 0 auto;">
+          </iframe>
+          <h2 class="subtitle" style="text-align: left; margin-top: 20px;">
+            The Data Collection Module constructs a 3D semantic map from sequence data of RGBD images and camera poses collected by the robot moving in 3D space.
+            First, RGB images collected by the robot exploring the environment are inputted into the Multi-Scale Stage Network for deblurring.
+            Next, they are inputted into the FastSAM for image segmentation.
+            Then 3D semantic map is constructed using the segmentation results, depth images, and camera poses.
+            Next, this module collects object images using a constructed 3D semantic map.
+            During this process, 2D segmentation masks images from the 3D semantic map by ray tracing.
+            Ray tracing generates a mask image from an arbitrary camera pose by sending pseudo-rays in the depth direction from the camera and capturing the instance ID of the first collision on the 3D map.
+            This process ensures the consistent generation of pseudo-labels for images of the same instance.
+            Then, the generated mask images are transformed into bounding boxes (BBoxes), and the regions of the transformed BBoxes are extracted from the RGB images to collect object images. 
+          </h2>
         </div>
-        <!-- <div class="item item-video2">
-          <video poster="" id="video2" autoplay controls muted loop height="100%">
-            <source src="static/videos/carousel2.mp4"
-            type="video/mp4">
-          </video>
-        </div> -->
-        <!-- <div class="item item-video3">
-          <video poster="" id="video3" autoplay controls muted loop height="100%">\
-            <source src="static/videos/carousel3.mp4"
-            type="video/mp4">
-          </video>
-        </div> -->
-        <!-- <div class="item item-video4">
-          <video poster="" id="video4" autoplay controls muted loop height="100%">\
-            <source src="static/videos/carousel4.mp4"
-            type="video/mp4">
-          </video>
-        </div> -->
-      <!-- </div> -->
+      </div>
     </div>
   </div>
 </section>
@@ -316,42 +294,23 @@
   <div class="hero-body">
     <div class="container">
       <h2 class="title is-3">Fine-tuning Module</h2>
-      <!-- <div id="results-carousel" class="carousel results-carousel"> -->
-        <div class="item">
-          <img src="./static/images/fine_tuning_module.svg" alt="image of model" style="width: 70%; height: auto;"/>
-          <h2 class="subtitle has-text-centered">
-            This module fine-tunes a pre-trained image encoder by the contrastive task between low-quality images observed by the robot and few-shot high-quality images provided by the user.
-            SimSiam, a negative-free contrastive learning method, is shown to be capable of learning with a small batch size.
-            In contrast, contrastive learning methods require negative pairs learning with a huge batch size.
-            Therefore, we utilize SimSiam for fine-tuning.
-    
-            Additionally, for training, the user needs to capture few-shot images of objects they want the robot to locate with a mobile device and provide them to the robot.
-            This requires the user to instruct the robot, but since it involves only a few images, it could not be considered a significant burden for the user.
-            In this study, we assume that the system has up to five high-quality images for each instance and evaluate the experiments accordingly.
-    
-            Furthermore, it is shown that by minimizing the loss of contrastive learning and the loss function of the linear classifier for a pre-trained image encoder through fine-tuning, the variance of feature vectors between images with the same label decreases.
-            This characteristic leads to an improvement in the accuracy of image classification tasks. 
-          </h2>
-        </div>
-        <!-- <div class="item">
-          <img src="static/images/carousel2.jpg" alt="MY ALT TEXT"/>
-          <h2 class="subtitle has-text-centered">
-            Second image description.
-          </h2>
-        </div>
-        <div class="item">
-          <img src="static/images/carousel3.jpg" alt="MY ALT TEXT"/>
-          <h2 class="subtitle has-text-centered">
-            Third image description.
-          </h2>
-        </div>
-        <div class="item">
-          <img src="static/images/carousel4.jpg" alt="MY ALT TEXT"/>
-          <h2 class="subtitle has-text-centered">
-            Fourth image description.
-          </h2>
-        </div> -->
-      <!-- </div> -->
+      <div class="item" style="text-align: center;"> <!-- 画像を中央揃え -->
+        <img src="./static/images/fine_tuning_module.svg" alt="image of model" 
+             style="width: 70%; height: auto; display: block; margin: 0 auto;"/>
+        <h2 class="subtitle" style="text-align: left; margin-top: 20px;">
+          This module fine-tunes a pre-trained image encoder by the contrastive task between low-quality images observed by the robot and few-shot high-quality images provided by the user.
+          SimSiam, a negative-free contrastive learning method, is shown to be capable of learning with a small batch size.
+          In contrast, contrastive learning methods require negative pairs learning with a huge batch size.
+          Therefore, we utilize SimSiam for fine-tuning.
+          
+          Additionally, for training, the user needs to capture few-shot images of objects they want the robot to locate with a mobile device and provide them to the robot.
+          This requires the user to instruct the robot, but since it involves only a few images, it could not be considered a significant burden for the user.
+          In this study, we assume that the system has up to five high-quality images for each instance and evaluate the experiments accordingly.
+          
+          Furthermore, it is shown that by minimizing the loss of contrastive learning and the loss function of the linear classifier for a pre-trained image encoder through fine-tuning, the variance of feature vectors between images with the same label decreases.
+          This characteristic leads to an improvement in the accuracy of image classification tasks. 
+        </h2>
+      </div>
     </div>
   </div>
 </section>
@@ -362,9 +321,9 @@
   <div class="hero-body">
     <div class="container">
       <!-- <div id="results-carousel" class="carousel results-carousel"> -->
-        <div class="video-section1">
+        <div class="video-section1" style="text-align: center;">
           <h3 class="title is-3">Navigation Module</h3>
-          <div class="publication-video">
+          <div class="publication-video" style="display: inline-block; text-align: left; max-width: 70%;">
             <iframe 
                 src="https://www.youtube.com/embed/eSN7ZDlBsew?si=PjvbBheTbDDhlAlk" 
                 frameborder="0" 
