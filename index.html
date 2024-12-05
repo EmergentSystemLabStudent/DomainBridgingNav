@@ -1,243 +1,479 @@
 <!DOCTYPE html>
 <html>
-<head lang="en">
-  <meta name="keywords" content="DomainBridgingNav">
-  <title>Real-world Instance-specific Image Goal Navigation for Service Robots: Bridging the Domain Gap with Contrastive Learning</title>
-  <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
-  <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
-  <style>
-    .container {
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      height: 70px;
-      flex-direction: column;
-      text-align: center;
-    }
+<head>
+  <meta charset="utf-8">
+  <!-- Meta tags for social media banners, these should be filled in appropriatly as they are your "business card" -->
+  <!-- Replace the content tag with appropriate information -->
+  <meta name="description" content="CrossIA">
+  <meta property="og:title" content="CrossIA"/>
+  <meta property="og:description" content="Real-world Instance-specific Image Goal Navigation for Service Robots: Bridging the Domain Gap with Contrastive Learning."/>
+  <meta property="og:url" content="https://emergentsystemlabstudent.github.io/DomainBridgingNav/"/>
+  <!-- Path to banner image, should be in the path listed below. Optimal dimenssions are 1200X630-->
+  <meta property="og:image" content="static/image/your_banner_image.png" />
+  <meta property="og:image:width" content="1200"/>
+  <meta property="og:image:height" content="630"/>
 
-    .fixed-width {
-      width: 700px;
-      margin: 10px auto;
-    }
 
-    .center-align {
-      text-align: center;
-    }
+  <meta name="twitter:title" content="TWITTER BANNER TITLE META TAG">
+  <meta name="twitter:description" content="TWITTER BANNER DESCRIPTION META TAG">
+  <!-- Path to banner image, should be in the path listed below. Optimal dimenssions are 1200X600-->
+  <meta name="twitter:image" content="static/images/your_twitter_banner_image.png">
+  <meta name="twitter:card" content="summary_large_image">
+  <!-- Keywords for your paper to be indexed by-->
+  <meta name="keywords" content="KEYWORDS SHOULD BE PLACED HERE">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    .text-justify {
-      text-align: justify;
-    }
 
-    video {
-      width: 700px;
-      height: auto;
-      display: block;
-      margin: 10px auto;
-    }
+  <title>CrossIA</title>
+  <link rel="icon" type="image/x-icon" href="static/images/favicon.ico">
+  <link href="https://fonts.googleapis.com/css?family=Google+Sans|Noto+Sans|Castoro"
+  rel="stylesheet">
 
-    .col-md-8 {
-      width: 700px;
-      margin: 10px auto;
-    }
+  <link rel="stylesheet" href="static/css/bulma.min.css">
+  <link rel="stylesheet" href="static/css/bulma-carousel.min.css">
+  <link rel="stylesheet" href="static/css/bulma-slider.min.css">
+  <link rel="stylesheet" href="static/css/fontawesome.all.min.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/jpswalsh/academicons@1/css/academicons.min.css">
+  <link rel="stylesheet" href="static/css/index.css">
 
-    .github-link {
-      display: flex;
-      justify-content: center;
-    }
-
-    .github-link a {
-      margin: 10px;
-    }
-
-    .image-container {
-      display: flex;
-      justify-content: center;
-    }
-
-    .image-container {
-      display: flex;
-      justify-content: center;
-      align-items: center; /* 追加: 要素を横軸中心に配置 */
-      flex-direction: column; /* 追加: 子要素を縦に並べる */
-      width: 600px; /* 必要に応じて調整 */
-      margin: auto;
-    }
-
-    .image-container img {
-      width: 100%; /* 子要素の幅を親要素に合わせる */
-      height: auto;
-    }
-
-    .image-caption {
-      text-align: center;
-      width: 100%; /* キャプションの幅を親要素に合わせる */
-      margin-top: 10px; /* キャプションの上の余白を追加 */
-    }
-
-    .video-container {
-        margin: 10px;
-        display: flex;
-        justify-content: center;
-    }
-    
-    .video-container iframe {
-        width: 700px;
-        height: 394px;
-    }
-  </style>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script src="https://documentcloud.adobe.com/view-sdk/main.js"></script>
+  <script defer src="static/js/fontawesome.all.min.js"></script>
+  <script src="static/js/bulma-carousel.min.js"></script>
+  <script src="static/js/bulma-slider.min.js"></script>
+  <script src="static/js/index.js"></script>
+  <script src="static/js/carousel.js"></script>
 </head>
+
 <body>
-  <div class="container" id="main">
-    <div class="row">
-      <h2 class="col-md-12">
-         Real-world Instance-specific Image Goal Navigation for Service Robots<br>via Bridging Domain Gap Based on Contrastive Learning
+
+
+<section class="hero">
+  <div class="hero-body">
+    <div class="container is-max-desktop">
+      <div class="columns is-centered">
+        <div class="column has-text-centered">
+          <h1 class="title is-1 publication-title">Real-world Instance-specific Image Goal Navigation for Service Robots: Bridging the Domain Gap with Contrastive Learning</h1>
+          <div class="is-size-5 publication-authors">
+            <!-- Paper authors -->
+            <span class="author-block">
+              Taichi Sakaguchi<sup>1</sup>,</span>
+            <span class="author-block">
+              <a href="https://scholar.google.co.jp/citations?user=jtB7J0AAAAAJ&hl=ja&oi=ao" target="_blank">Akira Taniguchi<sup>1,*</sup>,</a></span>
+            <span class="author-block">
+              <a href="https://scholar.google.co.jp/citations?user=Y4qjYvMAAAAJ&hl=ja&oi=ao" target="_blank">Yoshinobu Hagiwara<sup>1,2</sup>,</a></span>
+            <span class="author-block">
+              <a href="https://scholar.google.co.jp/citations?user=tsm7qaQAAAAJ&hl=en&oi=ao" target="_blank">Lotfi El Hafi<sup>1</sup>,</span>
+            <span class="author-block">
+              <a href="https://scholar.google.co.jp/citations?user=KPxSCJUAAAAJ&hl=ja&oi=ao" target="_blank">Shoichi Hasegawa<sup>1</sup>,</span>
+            <span class="author-block">
+              <a href="https://scholar.google.co.jp/citations?user=dPOCLQEAAAAJ&hl=ja&oi=ao" target="_blank">Tadahiro Taniguchi<sup>1,3</sup></a></span>
+          </div>
+
+          <div class="is-size-5 publication-authors">
+            <span class="author-block">
+              <sup>1</sup>Ritsumeikan University,
+              <sup>2</sup>Soka University,
+              <sup>3</sup>Kyoto University
+              <br><span>Accepted at IEEE IRC 2024.</span>
+            </span>
+            <span class="eql-cntrb"><small><br><sup>*</sup>Corresponding Author</small></span>
+          </div>
+
+          <div class="column has-text-centered">
+            <div class="publication-links">
+              <!-- Arxiv PDF link -->
+              <span class="link-block">
+                <a href="https://arxiv.org/abs/2404.09645" target="_blank"
+                class="external-link button is-normal is-rounded is-dark">
+                  <span class="icon">
+                    <i class="fas fa-file-pdf"></i>
+                  </span>
+                  <span>
+                    Paper
+                  </span>
+                </a>
+              </span>
+
+              <!-- Slide link -->
+              <span class="link-block">
+                <a href="" target="_blank"
+                class="external-link button is-normal is-rounded is-dark">
+                  <span class="icon">
+                    <i class="fas fa-file-pdf"></i>
+                  </span>
+                  <span>Slide (coming soon)</span>
+                </a>
+              </span>
+
+              <!-- Github link -->
+              <span class="link-block">
+                <a href="https://github.com/EmergentSystemLabStudent/DomainBridgingNav" target="_blank"
+                class="external-link button is-normal is-rounded is-dark">
+                  <span class="icon">
+                    <i class="fab fa-github"></i>
+                  </span>
+                  <span>Code</span>
+                </a>
+              </span>
+
+              <!-- ArXiv abstract Link -->
+              <!-- <span class="link-block">
+                <a href="https://arxiv.org/abs/<ARXIV PAPER ID>" target="_blank"
+                class="external-link button is-normal is-rounded is-dark">
+                  <span class="icon">
+                    <i class="ai ai-arxiv"></i>
+                  </span>
+                  <span>arXiv</span>
+                </a>
+              </span> -->
+
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- Teaser video-->
+<!-- <section class="hero teaser">
+  <div class="container is-max-desktop">
+    <div class="hero-body">
+      <video poster="" id="tree" autoplay controls muted loop height="100%">
+        <source src="static/videos/banner_video.mp4"
+        type="video/mp4">
+      </video>
+      <h2 class="subtitle has-text-centered">
+        Aliquam vitae elit ullamcorper tellus egestas pellentesque. Ut lacus tellus, maximus vel lectus at, placerat pretium mi. Maecenas dignissim tincidunt vestibulum. Sed consequat hendrerit nisl ut maximus.
       </h2>
     </div>
   </div>
-  
-  <p class="center-align">Taichi Sakaguchi, <a href="https://scholar.google.com/citations?hl=en&user=jtB7J0AAAAAJ" target=“_blank” rel=“noopener noreferrer”>Akira Taniguchi</a>, <a href="https://scholar.google.com/citations?hl=en&user=Y4qjYvMAAAAJ" target=“_blank” rel=“noopener noreferrer”>Yoshinobu Hagiwara</a>, <a href="https://scholar.google.co.jp/citations?user=tsm7qaQAAAAJ&hl" target=“_blank” rel=“noopener noreferrer”>Lotfi El Hafi</a>, <a href="https://scholar.google.co.jp/citations?user=KPxSCJUAAAAJ&hl" target=“_blank” rel=“noopener noreferrer”>Shoichi Hasegawa</a>, <a href="https://scholar.google.com/citations?hl=en&user=dPOCLQEAAAAJ" target=“_blank” rel=“noopener noreferrer”>Tadahiro Taniguchi</a></p>
-  
-  <div class="github-link">
-    <a href="https://github.com/EmergentSystemLabStudent/DomainBridgingNav" target=“_blank” rel=“noopener noreferrer”>Github</a>
-    <a href="https://arxiv.org/abs/2404.09645" target=“_blank” rel=“noopener noreferrer”>Paper</a>
-    <!-- <a href="" target=“_blank” rel=“noopener noreferrer”>Slide</a> -->
-  </div>
+</section> -->
+<!-- End teaser video -->
 
-  <video src="video/v3.mp4" style="width: 700px; height: auto;" controls></video>
-  
-  <!-- <div class="video-container">
-      <iframe src="https://www.youtube.com/embed/n8se-MgPi50?si=B5B60-8XXMO-j2CC" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
-  </div> -->
-  
-  <h2 class="fixed-width">Abstract</h2>
-  <p class="center-align fixed-width text-justify">
-    Improving instance-specific image goal navigation (InstanceImageNav), which locates the identical object in a real-world environment from a query image, is essential for robotic systems to assist users in finding desired objects.
-    The challenge lies in the domain gap between low-quality images observed by the moving robot, characterized by motion blur and low-resolution, and high-quality query images provided by the user.
-    Such domain gaps could significantly reduce the task success rate but have yet to be the focus of previous work.
-    To address this, we propose a novel method called <b> Few-shot Cross-quality Instance-aware Adaptation (CrossIA)</b>, which employs contrastive learning with an instance classifier to align features between massive low- and few-high-quality images.
-    This approach effectively reduces the domain gap by bringing the latent representations of cross-quality images closer on an instance basis.
-    Additionally, the system integrates an object image collection with a pre-trained deblurring model to enhance the observed image quality.
-    Our method fine-tunes the SimSiam model, which was pre-trained on ImageNet using CrossIA. 
-    We evaluated our method's effectiveness through an InstanceImageNav task with 20 different types of instances, where the robot identifies the same instance in a real-world environment as a high-quality query image.
-    Our experiments showed that our method improves the task success rate by up to three times compared to the baseline, a conventional approach based on SuperGlue.
-    These findings highlight the potential of leveraging contrastive learning and image enhancement techniques to bridge the domain gap and improve object localization in robotic applications.  </p>
-<br>
-  <h2 class="fixed-width">Approach</h2>
-  <p class="center-align fixed-width text-justify">
-    As shown in Figure 1, the proposed system is divided into three main modules.
-    Firstly, the Data Collection Module constructs the 3D semantic map of the environment and then collects object images.
-    Secondly, the Fine-tuning Module fine-tunes the pre-trained models using the collected object images and few-shot high-quality images provided by the user through contrastive learning.
-    Our contrastive learning is called <b> Few-shot Cross-quality Instance-aware Adaptation (CrossIA) </b>.
-    Lastly, the Navigation Module leverages the fine-tuned model and the semantic map to locate objects identical to the query image.  </p>
-  
-  <div class="image-container">
-    <img src="./images/real_approach.svg" alt="Overview of our method">
-    <div class="image-caption">Figure 1: Overview of our method</div>
-  </div>
-<br>
-  <h2 class="fixed-width">Data Collection Module</h2>
-  <p class="center-align fixed-width text-justify">
-    The Data Collection Module constructs a 3D semantic map from sequence data of RGBD images and camera poses collected by the robot moving in 3D space.
-    First, RGB images collected by the robot exploring the environment are inputted into the Multi-Scale Stage Network for deblurring.
-    Next, they are inputted into the FastSAM for image segmentation.
-    Then 3D semantic map is constructed using the segmentation results, depth images, and camera poses.
-    Next, this module collects object images using a constructed 3D semantic map.
-    During this process, 2D segmentation masks images from the 3D semantic map by ray tracing.
-    Ray tracing generates a mask image from an arbitrary camera pose by sending pseudo-rays in the depth direction from the camera and capturing the instance ID of the first collision on the 3D map.
-    This process ensures the consistent generation of pseudo-labels for images of the same instance.
-    Then, the generated mask images are transformed into bounding boxes (BBoxes), and the regions of the transformed BBoxes are extracted from the RGB images to collect object images.  </p>
-
-
-  <div class="video-container">
-      <iframe width="560" height="315" src="https://www.youtube.com/embed/Bx7k5HSl_1s" title="YouTube video player" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
-  </div>
-
-  
-  <h2 class="fixed-width">Fine-tuning Module</h2>
-  <p class="center-align fixed-width text-justify">
-    This module fine-tunes a pre-trained image encoder by the contrastive task between low-quality images observed by the robot and few-shot high-quality images provided by the user.
-    SimSiam, a negative-free contrastive learning method, is shown to be capable of learning with a small batch size.
-    In contrast, contrastive learning methods require negative pairs learning with a huge batch size.
-    Therefore, we utilize SimSiam for fine-tuning.
-    
-    Additionally, for training, the user needs to capture few-shot images of objects they want the robot to locate with a mobile device and provide them to the robot.
-    This requires the user to instruct the robot, but since it involves only a few images, it could not be considered a significant burden for the user.
-    In this study, we assume that the system has up to five high-quality images for each instance and evaluate the experiments accordingly.
-    
-    Furthermore, it is shown that by minimizing the loss of contrastive learning and the loss function of the linear classifier for a pre-trained image encoder through fine-tuning, the variance of feature vectors between images with the same label decreases.
-    This characteristic leads to an improvement in the accuracy of image classification tasks.  </p>
-
-    <div class="image-container" style="width: 600px; margin: auto;">
-        <img src="./images/fine_tuning_module.jpg" style="width: 100%; height: auto;">
-        <p class="center-align" style="text-align: center;">Figure 2: Fine-tuning module</p>
+<!-- Paper abstract -->
+<section class="section hero is-light">
+  <div class="container is-max-desktop">
+    <div class="columns is-centered has-text-centered">
+      <div class="column is-four-fifths">
+        <h2 class="title is-3">Abstract</h2>
+        <div class="content has-text-justified">
+          <p>
+            Improving instance-specific image goal navigation (InstanceImageNav), which locates the identical object in a real-world environment from a query image, is essential for robotic systems to assist users in finding desired objects.
+            The challenge lies in the domain gap between low-quality images observed by the moving robot, characterized by motion blur and low-resolution, and high-quality query images provided by the user.
+            Such domain gaps could significantly reduce the task success rate but have yet to be the focus of previous work.
+            To address this, we propose a novel method called <b> Few-shot Cross-quality Instance-aware Adaptation (CrossIA)</b>, which employs contrastive learning with an instance classifier to align features between massive low- and few-high-quality images.
+            This approach effectively reduces the domain gap by bringing the latent representations of cross-quality images closer on an instance basis.
+            Additionally, the system integrates an object image collection with a pre-trained deblurring model to enhance the observed image quality.
+            Our method fine-tunes the SimSiam model, which was pre-trained on ImageNet using CrossIA. 
+            We evaluated our method's effectiveness through an InstanceImageNav task with 20 different types of instances, where the robot identifies the same instance in a real-world environment as a high-quality query image.
+            Our experiments showed that our method improves the task success rate by up to three times compared to the baseline, a conventional approach based on SuperGlue.
+            These findings highlight the potential of leveraging contrastive learning and image enhancement techniques to bridge the domain gap and improve object localization in robotic applications.
+          </p>
+        </div>
+      </div>
     </div>
+  </div>
+</section>
+<!-- End paper abstract -->
 
-  <p class="center-align fixed-width text-justify">
-    Therefore, we also fine-tune the image encoder by adding a linear classifier to SimSiam, as shown in Figure 2.
-    The label of instances required for calculating the linear classifier's loss is obtained using pseudo-labels automatically generated by the data collection module.
-      
-    \( p_i^l \) and \( z_i^{l} \) are the outputs of SimSiam's projector and predictor of the object image \( x_i^l \) observed by the robot, respectively.
-    \( p_i^{\prime l} \) and \( z_i^{\prime l} \) are the outputs of SimSiam's projector and predictor of the object image \( x_i^{\prime l} \) where \( x_i^{l} \) and \( x_i^{\prime l} \) are different images of the same object generated by data augmentation.
-    \( y_{i, pred}^l \) is the prediction result when \( x_i^l \) is classified.
-    \( p_i^h \) and \( z_i^h \) are the outputs of projector and predictor, respectively, when the high-quality image \( x_i^h \) is input to SimSiam, and \( y_{i, pred} ^h \) is the prediction result when \( x_i^h \) is classified.
+<!-- Image carousel -->
+<section class="hero is-small">
+  <div class="hero-body">
+    <div class="container">
+      <h2 class="title is-3">Overview</h2>
+      <!-- <div id="results-carousel" class="carousel results-carousel"> -->
+        <div class="item">
+          <img src="./static/images/overview.svg" alt="image of model"/>
+          <h2 class="subtitle has-text-centered">
+            Focused task in this study. 
+            (Top) The robot identifies the position of an object shown in a query image provided by a user's mobile phone.
+            (Bottom left) Domain gap that the image quality significantly differs between the image taken by the user's mobile phone and the object image observed by the real robot. 
+            (Bottom right) Contrastive learning to align images of the same instance with different image quality in latent space.
+          </h2>
+        </div>
+        <!-- <div class="item">
+          <img src="static/images/carousel2.jpg" alt="MY ALT TEXT"/>
+          <h2 class="subtitle has-text-centered">
+            Second image description.
+          </h2>
+        </div>
+        <div class="item">
+          <img src="static/images/carousel3.jpg" alt="MY ALT TEXT"/>
+          <h2 class="subtitle has-text-centered">
+            Third image description.
+          </h2>
+        </div>
+        <div class="item">
+          <img src="static/images/carousel4.jpg" alt="MY ALT TEXT"/>
+          <h2 class="subtitle has-text-centered">
+            Fourth image description.
+          </h2>
+        </div> -->
+      <!-- </div> -->
+    </div>
+  </div>
+</section>
+<!-- End image carousel -->
 
-    Therefore, fine-tuning the image encoder involves contrastive learning between high-quality and low-quality images, and the contrastive learning between images the robot observed.
-    In this paper, 
-    \( \{(x_i^l, x_i^h, y_{i, true})\}_{i =1}^{N_c} \) 
-    is the set of high-quality image, low-quality image and their label and 
-    \( \{(x_i^l, y_{i_{true}})\}_{i=1}^{N_r} \) 
-    is the set of images and their labels of low-quality images.
+<!-- Image carousel -->
+<section class="hero is-small">
+  <div class="hero-body">
+    <div class="container">
+      <h2 class="title is-3">Few-shot cross-quality instance-aware adaptation (CrossIA)</h2>
+      <!-- <div id="results-carousel" class="carousel results-carousel"> -->
+        <div class="item">
+          <img src="./static/images/proposed_method.svg" alt="image of model"/>
+          <h2 class="subtitle has-text-centered">
+            The overall diagram of the proposed system. 
+            The proposed system automatically collects object images from RGBD images and camera pose time series data collected by a robot that explored the environment in advance. 
+            The object image database stores images along with their corresponding ID and position coordinates (e.g., ”ID:1, [3.7, 0.8]”). 
+            The fine-tuning module fine-tunes the pre-trained image encoder using the collected object images. 
+            The navigation module identifies the position of the object identical to the given query image using a fine-tuned image encoder.
+          </h2>
+        </div>
+        <!-- <div class="item">
+          <img src="static/images/carousel2.jpg" alt="MY ALT TEXT"/>
+          <h2 class="subtitle has-text-centered">
+            Second image description.
+          </h2>
+        </div>
+        <div class="item">
+          <img src="static/images/carousel3.jpg" alt="MY ALT TEXT"/>
+          <h2 class="subtitle has-text-centered">
+            Third image description.
+          </h2>
+        </div>
+        <div class="item">
+          <img src="static/images/carousel4.jpg" alt="MY ALT TEXT"/>
+          <h2 class="subtitle has-text-centered">
+            Fourth image description.
+          </h2>
+        </div> -->
+      <!-- </div> -->
+    </div>
+  </div>
+</section>
+<!-- End image carousel -->
+
+<!-- YouTube carousel -->
+<section class="hero is-small">
+  <div class="hero-body">
+    <div class="container">
+      <!-- <div id="results-carousel" class="carousel results-carousel"> -->
+        <div class="video-section1">
+          <h3 class="title is-3">Data Collection Module</h3>
+          <div class="publication-video">
+            <iframe src="https://www.youtube.com/embed/Bx7k5HSl_1s" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+            <h2 class="subtitle has-text-centered">
+              The Data Collection Module constructs a 3D semantic map from sequence data of RGBD images and camera poses collected by the robot moving in 3D space.
+              First, RGB images collected by the robot exploring the environment are inputted into the Multi-Scale Stage Network for deblurring.
+              Next, they are inputted into the FastSAM for image segmentation.
+              Then 3D semantic map is constructed using the segmentation results, depth images, and camera poses.
+              Next, this module collects object images using a constructed 3D semantic map.
+              During this process, 2D segmentation masks images from the 3D semantic map by ray tracing.
+              Ray tracing generates a mask image from an arbitrary camera pose by sending pseudo-rays in the depth direction from the camera and capturing the instance ID of the first collision on the 3D map.
+              This process ensures the consistent generation of pseudo-labels for images of the same instance.
+              Then, the generated mask images are transformed into bounding boxes (BBoxes), and the regions of the transformed BBoxes are extracted from the RGB images to collect object images. 
+             </h2>
+          </div>
+        </div>
+        <!-- <div class="item item-video2">
+          <video poster="" id="video2" autoplay controls muted loop height="100%">
+            <source src="static/videos/carousel2.mp4"
+            type="video/mp4">
+          </video>
+        </div> -->
+        <!-- <div class="item item-video3">
+          <video poster="" id="video3" autoplay controls muted loop height="100%">\
+            <source src="static/videos/carousel3.mp4"
+            type="video/mp4">
+          </video>
+        </div> -->
+        <!-- <div class="item item-video4">
+          <video poster="" id="video4" autoplay controls muted loop height="100%">\
+            <source src="static/videos/carousel4.mp4"
+            type="video/mp4">
+          </video>
+        </div> -->
+      <!-- </div> -->
+    </div>
+  </div>
+</section>
+<!-- End video carousel -->
+
+<!-- Image carousel -->
+<section class="hero is-small">
+  <div class="hero-body">
+    <div class="container">
+      <h2 class="title is-3">Fine-tuning Module</h2>
+      <!-- <div id="results-carousel" class="carousel results-carousel"> -->
+        <div class="item">
+          <img src="./static/images/fine_tuning_module.svg" alt="image of model"/>
+          <h2 class="subtitle has-text-centered">
+            This module fine-tunes a pre-trained image encoder by the contrastive task between low-quality images observed by the robot and few-shot high-quality images provided by the user.
+            SimSiam, a negative-free contrastive learning method, is shown to be capable of learning with a small batch size.
+            In contrast, contrastive learning methods require negative pairs learning with a huge batch size.
+            Therefore, we utilize SimSiam for fine-tuning.
     
-  <h2 class="fixed-width">Navigation Module</h2>
-  <p class="center-align fixed-width text-justify">
-    The Navigation Module locates the object identical to the given query image.
-    This is conducted by leveraging images of objects collected by the Data Collection Module, the 3D semantic map, and feature vectors extracted from the fine-tuned image encoder.
-     First, the fine-tuned image encoder is utilized to compute the feature vectors 
-    \( x_{obs} \) and \( x_{query} \) for the object images collected by the Data Collection Module and the query image, respectively.
-    Using these feature vectors, the similarity \( s \) between the query image and the observed object images is calculated using the cosine similarity.
-    Then, the instance with the highest similarity to the query image is identified.
-    Next, the module identifies the centroid coordinates of the object on the 3D map that is most similar to the query image, and the robot moves to close it.
-  </p>
-
+            Additionally, for training, the user needs to capture few-shot images of objects they want the robot to locate with a mobile device and provide them to the robot.
+            This requires the user to instruct the robot, but since it involves only a few images, it could not be considered a significant burden for the user.
+            In this study, we assume that the system has up to five high-quality images for each instance and evaluate the experiments accordingly.
     
-<div class="video-container">
-  <iframe width="560" height="315" src="https://www.youtube.com/embed/eSN7ZDlBsew?si=PjvbBheTbDDhlAlk" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
-<!-- <iframe width="560" height="560" src="https://www.youtube.com/embed/RwuG36Vcjc0" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe> -->
-</div>
-  <br>
-  <div class="col-md-8">
-    <h2 class="text-center">Citation</h2>
-    <p class="center-align fixed-width text-justify">
-      The BibTeX for this paper is below.
-      <pre><code>
-@inproceedings{domainbridgingnav2024,
-  title={Real-world Instance-specific Image Goal Navigation for Service Robots via Bridging Domain Gap Based on Contrastive Learning},
-  author={Taichi Sakaguchi and Akira Taniguchi and Yoshinobu Hagiwara and Lotfi El Hafi and Shoichi Hasegawa and Tadahiro Taniguchi},
-  booktitle={arXiv preprint},
-  year={2024}
-}
-      </code></pre>
-    </p>
+            Furthermore, it is shown that by minimizing the loss of contrastive learning and the loss function of the linear classifier for a pre-trained image encoder through fine-tuning, the variance of feature vectors between images with the same label decreases.
+            This characteristic leads to an improvement in the accuracy of image classification tasks. 
+          </h2>
+        </div>
+        <!-- <div class="item">
+          <img src="static/images/carousel2.jpg" alt="MY ALT TEXT"/>
+          <h2 class="subtitle has-text-centered">
+            Second image description.
+          </h2>
+        </div>
+        <div class="item">
+          <img src="static/images/carousel3.jpg" alt="MY ALT TEXT"/>
+          <h2 class="subtitle has-text-centered">
+            Third image description.
+          </h2>
+        </div>
+        <div class="item">
+          <img src="static/images/carousel4.jpg" alt="MY ALT TEXT"/>
+          <h2 class="subtitle has-text-centered">
+            Fourth image description.
+          </h2>
+        </div> -->
+      <!-- </div> -->
+    </div>
   </div>
+</section>
+<!-- End image carousel -->
 
-  <div class="col-md-8">
-    <h2 class="text-center">Other links</h2>
-    <p class="text-justify">
-      <ul>
-        <li><a href="http://www.em.ci.ritsumei.ac.jp/" target=“_blank” rel=“noopener noreferrer”>Laboratory website</a></li>
-        <li><a href="" target=“_blank” rel=“noopener noreferrer”>Demo video of this research</a></li>
-        <li><a href="https://www.youtube.com/watch?v=UBgZGRG00eA" target=“_blank” rel=“noopener noreferrer”>Demo video of related research</a></li>
-      </ul>
-    </p>
+<!-- YouTube carousel -->
+<section class="hero is-small">
+  <div class="hero-body">
+    <div class="container">
+      <!-- <div id="results-carousel" class="carousel results-carousel"> -->
+        <div class="video-section1">
+          <h3 class="title is-3">Navigation Module</h3>
+          <div class="publication-video">
+            <iframe src="https://www.youtube.com/embed/eSN7ZDlBsew?si=PjvbBheTbDDhlAlk" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+            <h2 class="subtitle has-text-centered">
+              The Navigation Module locates the object identical to the given query image.
+              This is conducted by leveraging images of objects collected by the Data Collection Module, the 3D semantic map, and feature vectors extracted from the fine-tuned image encoder.
+              First, the fine-tuned image encoder is utilized to compute the feature vectors 
+              \( x_{obs} \) and \( x_{query} \) for the object images collected by the Data Collection Module and the query image, respectively.
+              Using these feature vectors, the similarity \( s \) between the query image and the observed object images is calculated using the cosine similarity.
+              Then, the instance with the highest similarity to the query image is identified.
+              Next, the module identifies the centroid coordinates of the object on the 3D map that is most similar to the query image, and the robot moves to close it.
+             </h2>
+          </div>
+        </div>
+        <!-- <div class="item item-video2">
+          <video poster="" id="video2" autoplay controls muted loop height="100%">
+            <source src="static/videos/carousel2.mp4"
+            type="video/mp4">
+          </video>
+        </div> -->
+        <!-- <div class="item item-video3">
+          <video poster="" id="video3" autoplay controls muted loop height="100%">\
+            <source src="static/videos/carousel3.mp4"
+            type="video/mp4">
+          </video>
+        </div> -->
+        <!-- <div class="item item-video4">
+          <video poster="" id="video4" autoplay controls muted loop height="100%">\
+            <source src="static/videos/carousel4.mp4"
+            type="video/mp4">
+          </video>
+        </div> -->
+      <!-- </div> -->
+    </div>
   </div>
+</section>
+<!-- End video carousel -->
 
-  <div class="col-md-8">
-    <h2 class="text-center">Acknowledgements</h2>
-    <p class="text-justify">
-      This work was supported by JSPS KAKENHI Grants-in-Aid for Scientific Research (Grant Numbers JP23K16975, 22K12212) JST Moonshot Research & Development Program (Grant Number JPMJMS2011).
+<!-- Paper poster -->
+<!-- <section class="hero is-small is-light">
+  <div class="hero-body">
+    <div class="container">
+      <h2 class="title">Poster</h2>
+
+      <iframe  src="static/pdfs/pointingimgest_poster.pdf" width="100%" height="550">
+        </iframe>
+
+    </div>
+  </div>
+</section> -->
+<!--End paper poster -->
+
+
+<!--BibTex citation -->
+<section class="section" id="BibTeX">
+  <div class="container is-max-desktop content">
+    <h2 class="title">BibTeX</h2>
+    <!-- <pre><code>BibTex Code Here</code></pre> -->
+    <pre><code>
+      @inproceedings{sakaguchi2024crossia,
+        author={Sakaguchi, Taichi  and Taniguchi, Akira and Hagiwara, Yoshinobu  and El Hafi, Lotfi  and Hasegawa, Shoichi and Taniguchi, Tadahiro},
+        title={Real-world Instance-specific Image Goal Navigation: Bridging Domain Gaps via Contrastive Learning},
+        booktitle={IEEE International Conference on Robotic Computing (IRC)},
+        year={2024, accepted}
+      }
+    </code></pre>
+  </div>
+</section>
+<!--End BibTex citation -->
+
+<!--Laboratory Information -->
+<section class="section" id="Laboratory Information">
+  <div class="container is-max-desktop content">
+    <h2 class="title">Laboratory Information</h2>
+    <ul>
+      <li><a href="http://www.em.ci.ritsumei.ac.jp/" target="_blank" rel="noopener noreferrer">Emergent Systems Laboratory</a></li>
+      <li><a href="https://www.youtube.com/@tarosouhatsu494/videos" target="_blank" rel="noopener noreferrer">Demonstration Videos of the Laboratory</a></li>
+    </ul>
+  </div>
+</section>
+<!--End Laboratory Information -->
+
+<!--Acknowledgements citation -->
+<section class="section" id="Acknowledgements">
+  <div class="container is-max-desktop content">
+    <!-- <h2 class="title">Acknowledgements</h2> -->
+    <h2 class="title">Funding</h2>
+    <p>
+      This work was supported by JSPS KAKENHI Grants-in-Aid for Scientific Research (Grant Numbers JP23K16975, 22K12212) and JST Moonshot Research & Development Program (Grant Number JPMJMS2011).
     </p>
   </div>
-  
-  <script src="script.js"></script>
-</body>
-</html>
+</section>
+<!--End Acknowledgements citation -->
+
+
+<footer class="footer">
+  <div class="container">
+    <div class="columns is-centered">
+      <div class="column is-8">
+        <div class="content">
+
+          <p>
+            This page was built using the <a href="https://github.com/eliahuhorwitz/Academic-project-page-template" target="_blank">Academic Project Page Template</a> which was adopted from the <a href="https://nerfies.github.io" target="_blank">Nerfies</a> project page.
+            You are free to borrow the of this website, we just ask that you link back to this page in the footer. <br> This website is licensed under a <a rel="license"  href="http://creativecommons.org/licenses/by-sa/4.0/" target="_blank">Creative
+            Commons Attribution-ShareAlike 4.0 International License</a>.
+          </p>
+
+        </div>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<!-- Statcounter tracking code -->
+
+<!-- You can add a tracker to track page visits by creating an account at statcounter.com -->
+
+<!-- End of Statcounter Code -->
+
+  </body>
+  </html>
