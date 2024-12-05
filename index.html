@@ -64,6 +64,7 @@
               <a href="https://scholar.google.co.jp/citations?user=Y4qjYvMAAAAJ&hl=ja&oi=ao" target="_blank">Yoshinobu Hagiwara<sup>1,2</sup>,</a></span>
             <span class="author-block">
               <a href="https://scholar.google.co.jp/citations?user=tsm7qaQAAAAJ&hl=en&oi=ao" target="_blank">Lotfi El Hafi<sup>1</sup>,</span>
+            <br>
             <span class="author-block">
               <a href="https://scholar.google.co.jp/citations?user=KPxSCJUAAAAJ&hl=ja&oi=ao" target="_blank">Shoichi Hasegawa<sup>1</sup>,</span>
             <span class="author-block">
@@ -186,7 +187,7 @@
       <h2 class="title is-3">Overview</h2>
       <!-- <div id="results-carousel" class="carousel results-carousel"> -->
         <div class="item">
-          <img src="./static/images/overview.svg" alt="image of model"/>
+          <img src="./static/images/overview.svg" alt="image of model" style="width: 70%; height: auto;"/>
           <h2 class="subtitle has-text-centered">
             Focused task in this study. 
             (Top) The robot identifies the position of an object shown in a query image provided by a user's mobile phone.
@@ -225,7 +226,7 @@
       <h2 class="title is-3">Few-shot cross-quality instance-aware adaptation (CrossIA)</h2>
       <!-- <div id="results-carousel" class="carousel results-carousel"> -->
         <div class="item">
-          <img src="./static/images/proposed_method.svg" alt="image of model"/>
+          <img src="./static/images/proposed_method.svg" alt="image of model" style="width: 70%; height: auto;"/>
           <h2 class="subtitle has-text-centered">
             The overall diagram of the proposed system. 
             The proposed system automatically collects object images from RGBD images and camera pose time series data collected by a robot that explored the environment in advance. 
@@ -266,7 +267,13 @@
         <div class="video-section1">
           <h3 class="title is-3">Data Collection Module</h3>
           <div class="publication-video">
-            <iframe src="https://www.youtube.com/embed/Bx7k5HSl_1s" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+            <iframe 
+                src="https://www.youtube.com/embed/Bx7k5HSl_1s" 
+                frameborder="0" 
+                allow="autoplay; encrypted-media" 
+                allowfullscreen 
+                style="width: 70%; height: 400px; margin: 0 auto; display: block;">
+            </iframe>
             <h2 class="subtitle has-text-centered">
               The Data Collection Module constructs a 3D semantic map from sequence data of RGBD images and camera poses collected by the robot moving in 3D space.
               First, RGB images collected by the robot exploring the environment are inputted into the Multi-Scale Stage Network for deblurring.
@@ -311,7 +318,7 @@
       <h2 class="title is-3">Fine-tuning Module</h2>
       <!-- <div id="results-carousel" class="carousel results-carousel"> -->
         <div class="item">
-          <img src="./static/images/fine_tuning_module.svg" alt="image of model"/>
+          <img src="./static/images/fine_tuning_module.svg" alt="image of model" style="width: 70%; height: auto;"/>
           <h2 class="subtitle has-text-centered">
             This module fine-tunes a pre-trained image encoder by the contrastive task between low-quality images observed by the robot and few-shot high-quality images provided by the user.
             SimSiam, a negative-free contrastive learning method, is shown to be capable of learning with a small batch size.
@@ -358,7 +365,13 @@
         <div class="video-section1">
           <h3 class="title is-3">Navigation Module</h3>
           <div class="publication-video">
-            <iframe src="https://www.youtube.com/embed/eSN7ZDlBsew?si=PjvbBheTbDDhlAlk" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+            <iframe 
+                src="https://www.youtube.com/embed/eSN7ZDlBsew?si=PjvbBheTbDDhlAlk" 
+                frameborder="0" 
+                allow="autoplay; encrypted-media" 
+                allowfullscreen 
+                style="width: 70%; height: 400px; margin: 0 auto; display: block;">
+            </iframe>
             <h2 class="subtitle has-text-centered">
               The Navigation Module locates the object identical to the given query image.
               This is conducted by leveraging images of objects collected by the Data Collection Module, the 3D semantic map, and feature vectors extracted from the fine-tuned image encoder.
